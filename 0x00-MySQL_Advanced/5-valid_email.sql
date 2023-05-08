@@ -4,3 +4,4 @@ ON users
 FOR EACH ROW 
 	IF NEW.email <> old.email
 		SET new.valid_email = 0;
+	END IF;

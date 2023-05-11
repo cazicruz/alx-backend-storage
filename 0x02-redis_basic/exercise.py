@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from typing import Union, Callable, Optional, Any
 import redis, uuid
 
 
@@ -10,7 +11,7 @@ class Cache():
         self.redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """stores data in Redis using the a random value
         as key and returns the key"""
         key = str(uuid.uuid4())

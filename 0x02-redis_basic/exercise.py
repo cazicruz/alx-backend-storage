@@ -7,12 +7,12 @@ class Cache():
 
     def __init__():
         """init method of the class stores an instance of redis"""
-        _redis = redis.Redis()
-        _redis.flushdb
+        self.redis = redis.Redis()
+        self._redis.flushdb
 
     def store(data) -> str:
         """stores data in Redis using the a random value
         as key and returns the key"""
         key = uuid.uuid4()
-        _redis.set({key: data})
+        self._redis.set({str(key): data})
         return key

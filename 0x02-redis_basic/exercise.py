@@ -13,6 +13,6 @@ class Cache():
     def store(data) -> str:
         """stores data in Redis using the a random value
         as key and returns the key"""
-        key = uuid.uuid4()
-        self._redis.set(str(key), data)
+        key = str(uuid.uuid4())
+        self._redis.set(key, data)
         return key

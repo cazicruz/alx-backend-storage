@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 from typing import Union, Optional, Callable
+from functools import wraps
 import redis, uuid
 
 
+def count_call(called_func: Callable) -> Callable:
+    """a function to count the times a callable is called"""
+    key = called_func.__qualname__
+
+    @wraps(called_func):
+    def wrapper(self, *args, **kwargs):
+        """ wrapper function"""
+        self._redis.incr(key)
+        return called_func(self, *args, **kwds)
+    return wrapper
+
+@count_calls
 class Cache():
     """a class called cache"""
 

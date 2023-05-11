@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from typing import Union, Callable, Optional, Any
+from typing import Union
 import redis, uuid
 
 
